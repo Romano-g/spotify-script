@@ -52,7 +52,7 @@
     "git.enableSmartCommit": true,
     "explorer.confirmDelete": false,
     "explorer.confirmDragAndDrop": false,
-    "editor.wordWrap": "wordWrapColumn",
+    // "editor.wordWrap": "wordWrapColumn",
     "python.analysis.autoImportCompletions": true,
     "git.ignoreLimitWarning": true
 }
