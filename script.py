@@ -1,9 +1,17 @@
 import spotipy
 from spotipy.oauth2 import SpotifyOAuth
+from dotenv import load_dotenv
+import os
 
-sp = spotipy.Spotify(auth_manager=SpotifyOAuth(client_id="9b853100cca243a7a9ebd317a74e59d5",
-                                               client_secret="7333cfabeacb428da40c3b6470b79916",
-                                               redirect_uri="http://localhost:8080/callback",
+load_dotenv()
+
+client_id_env = os.getenv('CLIENT_ID')
+client_secret_env = os.getenv('CLIENT_SECRET')
+client_redirect_uri = os.getenv('REDIRECT_URI')
+
+sp = spotipy.Spotify(auth_manager=SpotifyOAuth(client_id= client_id_env,
+                                               client_secret= client_id_env,
+                                               redirect_uri= client_redirect_uri,
                                                scope="user-library-read"))
 
 results = sp.current_user_saved_tracks()
