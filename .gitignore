@@ -1,3 +1,5 @@
 venv
 .env
-.env
+chromedriver.exe
+script_selenium.py
+.cache
