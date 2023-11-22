@@ -1,4 +1,5 @@
-![Spotify logo](https://github.com/Romano-g/spotify-script/assets/143983377/4187c344-1523-4afc-b33d-7c263629dcba)
+![Spotify logo](https://github.com/Romano-g/spotify-script/assets/143983377/6bb3085f-6f38-4033-966e-607a5fda3f4e)
+
 
 
 # Criando playlists com Python
