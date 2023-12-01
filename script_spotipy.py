@@ -22,7 +22,7 @@ client_redirect_uri = os.getenv('REDIRECT_URI')
 sp = spotipy.Spotify(auth_manager=SpotifyOAuth(client_id= client_id_env,
                                                client_secret= client_secret_env,
                                                redirect_uri= client_redirect_uri,
-                                               scope="user-library-read"))
+                                               scope="playlist-modify-public"))
 
 for x in range(0, numero_artista):
     result = sp.search(artista[x], limit=3)
