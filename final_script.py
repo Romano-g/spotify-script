@@ -24,7 +24,6 @@ sp = spotipy.Spotify(auth_manager=SpotifyOAuth(client_id= client_id_env,
 results_playlist = sp.playlist_items(playlist_id_env)
 results_ids = []
 
-
 def checker(offset: int):
     result_playlist_musics = sp.playlist_items(playlist_id_env, offset=offset)
     for id in range(len(result_playlist_musics['items'])):
@@ -69,12 +68,15 @@ sp = spotipy.Spotify(auth_manager=SpotifyOAuth(client_id= client_id_env,
                                                redirect_uri= client_redirect_uri_env,
                                                scope="playlist-modify-public"))
 
+def add_track(start: int, end: int):
+    sp.user_playlist_add_tracks(username_env, playlist_id_env, music_ids[start:end])
+
 try:
-    sp.user_playlist_add_tracks(username_env, playlist_id_env, music_ids[:100])
-    sp.user_playlist_add_tracks(username_env, playlist_id_env, music_ids[100:200])
-    sp.user_playlist_add_tracks(username_env, playlist_id_env, music_ids[200:300])
+    add_track(0, 100)
+    add_track(100, 200)
+    add_track(200, 300)
 except SpotifyException:
     os.system('cls')
-    print('Não há novas músicas para adicionar')
+    print('Não há novas músicas para adicionar!')
 
 print(f'Foram adicionadas todas as {len(music_ids)} músicas')
