@@ -54,5 +54,5 @@
     "explorer.confirmDragAndDrop": false,
     // "editor.wordWrap": "wordWrapColumn",
     "python.analysis.autoImportCompletions": true,
-    "git.ignoreLimitWarning": true
+    "git.ignoreLimitWarning": true,
 }
