@@ -1,3 +1,4 @@
+# type: ignore
 import spotipy
 from spotipy.oauth2 import SpotifyOAuth
 from spotipy import SpotifyException
@@ -16,12 +17,13 @@ artists_file = open('artists.txt', 'r')
 artists = [x.strip('\n') for x in artists_file.readlines()]
 artists_number = len(artists)
 
-sp = spotipy.Spotify(auth_manager=SpotifyOAuth(client_id=client_id_env,
-                                               client_secret=client_secret_env,
-                                               redirect_uri=client_redirect_uri_env,
-                                               scope="user-library-read"))
+sp = spotipy.Spotify(auth_manager=SpotifyOAuth(
+    client_id=client_id_env,
+    client_secret=client_secret_env,
+    redirect_uri=client_redirect_uri_env,
+    scope="user-library-read"
+))
 
-results_playlist = sp.playlist_items(playlist_id_env)
 results_ids = []
 
 
@@ -65,10 +67,11 @@ for id in ids:
     except IndexError:
         continue
 
-sp = spotipy.Spotify(auth_manager=SpotifyOAuth(client_id=client_id_env,
-                                               client_secret=client_secret_env,
-                                               redirect_uri=client_redirect_uri_env,
-                                               scope="playlist-modify-public"))
+sp = spotipy.Spotify(auth_manager=SpotifyOAuth(
+    client_id=client_id_env,
+    client_secret=client_secret_env,
+    redirect_uri=client_redirect_uri_env,
+    scope="playlist-modify-public"))
 
 
 def add_track(start: int, end: int):
