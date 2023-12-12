@@ -25,6 +25,8 @@ sp = spotipy.Spotify(auth_manager=SpotifyOAuth(
 ))
 
 results_ids = []
+ids = []
+music_ids = []
 
 
 def checker(offset: int):
@@ -34,13 +36,18 @@ def checker(offset: int):
     return
 
 
+def add_track(start: int, end: int):
+    sp.user_playlist_add_tracks(
+        username_env, playlist_id_env, music_ids[start:end])
+    return
+
+
 checker(0)
 checker(100)
 checker(200)
 checker(300)
 checker(400)
 
-ids = []
 
 for x in range(0, artists_number):
     result = sp.search(artists[x], limit=1)
@@ -49,7 +56,6 @@ for x in range(0, artists_number):
 
     ids.append(id_path)
 
-music_ids = []
 
 for id in ids:
     artista = sp.artist_top_tracks(id)
@@ -60,10 +66,10 @@ for id in ids:
 
             if music_id in results_ids:
                 continue
-            else:
-                music_ids.append(music_id)
-                print('Adicionando a música: ', artista['tracks'][x]['name'])
-                continue
+
+            music_ids.append(music_id)
+            print('Adicionando a música: ', artista['tracks'][x]['name'])
+
     except IndexError:
         continue
 
@@ -74,11 +80,6 @@ sp = spotipy.Spotify(auth_manager=SpotifyOAuth(
     scope="playlist-modify-public"))
 
 
-def add_track(start: int, end: int):
-    sp.user_playlist_add_tracks(
-        username_env, playlist_id_env, music_ids[start:end])
-
-
 try:
     add_track(0, 100)
     add_track(100, 200)
@@ -87,4 +88,4 @@ except SpotifyException:
     os.system('cls')
     print('Não há novas músicas para adicionar!')
 
-print(f'Foram adicionadas todas as {len(music_ids)} músicas')
+print(f'Foram adicionadas {len(music_ids)} músicas')
