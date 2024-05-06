@@ -3,3 +3,6 @@ venv
 chromedriver.exe
 script_selenium.py
 .cache
+.env_example
+.vscode/settings.json
+artists.txt
