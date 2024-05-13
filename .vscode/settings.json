@@ -8,7 +8,7 @@
   "workbench.colorTheme": "2077",
   "workbench.iconTheme": "material-icon-theme",
   "code-runner.executorMap": {
-    "python": "cls ; python -u"
+    "python": "clear ; python -u"
   },
   "code-runner.runInTerminal": true,
   "code-runner.ignoreSelection": true,
